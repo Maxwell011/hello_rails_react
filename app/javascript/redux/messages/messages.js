@@ -1,8 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// API URL
-// const API_URL = "api/v1/messages";
-
 // Actions String
 const GET_MSG = "get-messages";
 
@@ -10,10 +7,8 @@ const GET_MSG = "get-messages";
 export const retrieveMessages = createAsyncThunk(GET_MSG, async () => {
   const res = await fetch("api/v1/messages");
   const  {message}  = await res.json();
-  console.log(message);
   return message;
 });
-
 
 // Reducers
 const messagesSlice = createSlice({
@@ -26,11 +21,6 @@ const messagesSlice = createSlice({
     builder.addCase(retrieveMessages.fulfilled, (state, action) => {
       state.messages[0] = action.payload;
     });
-    // builder.addCase(
-    //   retrieveMessages.fulfilled(state, action) ={
-    //     state: action.payload
-    //   } 
-    // );
   },
 });
 
