@@ -5,7 +5,6 @@ import { retrieveMessages } from "../redux/messages/messages";
 export default function Greeting(){
   const   {messages}  = useSelector((state) => state.messages);
   const dispatch = useDispatch();
-    console.log(messages);
   useEffect(()=>{
     dispatch(retrieveMessages())
   },[dispatch])
